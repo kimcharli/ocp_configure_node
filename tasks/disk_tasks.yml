@@ -1,0 +1,18 @@
+---
+# These tasks are disk specific so won't run in a docker container
+# we conditionally include them in the main playbook
+
+- name: Check docker device present
+  command: grep "{{ docker_device }}$" /proc/partitions
+  register: dev_check
+  changed_when: False
+
+- name: Ensure parted is installed
+  yum:
+    name: parted
+    state: latest
+
+- name: Check size of docker device using parted
+  parted: device=/dev/{{ docker_device }} unit=GB
+  register: size_check
+  failed_when: size_check.sdb_info.size < min_storage[node_type]

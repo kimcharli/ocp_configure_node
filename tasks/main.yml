@@ -1,2 +1,18 @@
 ---
 # tasks file for ocp_configure_node
+
+# These tasks shouldn't be run when we are testing on Molecule under docker
+- include_tasks: disk_tasks.yml
+  when: running_on_docker is undefined
+
+- name: Check available memory
+  shell: free | awk '/Mem/ {print $2}'
+  register: mem_check
+  changed_when: False
+  failed_when: mem_check.stdout|int < ( min_memory[node_type] * 1024 * 1024 )
+
+- name: Check number of CPUs
+  shell: cat /proc/cpuinfo | grep "^processor" | wc -l
+  register: cpu_check
+  changed_when: False
+  failed_when: cpu_check.stdout|int < min_cpus[node_type]

@@ -3,3 +3,15 @@
   hosts: all
   roles:
     - role: ocp_configure_node
+  vars:
+    - node_type: compute
+    - docker_device: vda
+    - min_cpus:
+        master: 2
+        infra: 2
+        compute: 2
+    - min_memory:
+        master: 2
+        infra: 2
+        compute: 2
+    - running_on_docker: True
