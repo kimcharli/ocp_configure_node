@@ -1,0 +1,14 @@
+---
+- name: Ensure subscription-manager installed
+  yum:
+    name: subscription-manager
+    state: latest
+
+- name: Disable all repositories
+  command: subscription-manager repos --disable="*"
+
+
+- name: Enable required repositories
+  command: subscription-manager repos --enable="{{ item }}"
+  with_items: "{{ repos_to_enable }}"
+

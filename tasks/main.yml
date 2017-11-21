@@ -3,7 +3,7 @@
 
 # These tasks shouldn't be run when we are testing on Molecule under docker
 - include_tasks: disk_tasks.yml
-  when: running_on_docker is undefined
+  when: ansible_virtualization_type != "docker"
 
 - name: Check available memory
   shell: free | awk '/Mem/ {print $2}'
@@ -16,3 +16,40 @@
   register: cpu_check
   changed_when: False
   failed_when: cpu_check.stdout|int < min_cpus[node_type]
+
+- name: Ensure selinux packages installed
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - libselinux-python
+    - selinux-policy-targeted
+
+- name: Ensure SElinux is enforcing
+  selinux:
+    policy: targeted
+    state: enforcing
+
+- include_tasks: subscription_manager_tasks.yml
+  when: ansible_distribution == "RedHat"
+
+- name: Install base packages required for OCP
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ packages_to_install }}"
+
+- name: Update all
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install docker
+  yum:
+    name: docker-{{ docker_version }}
+    state: present
+
+# We can't test docker configuration when running under docker
+- include_tasks: docker_tasks.yaml
+  when: ansible_virtualization_type != "docker"
+

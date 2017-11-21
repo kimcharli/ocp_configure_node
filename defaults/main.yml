@@ -20,4 +20,5 @@ min_cpus:
   infra: 2
   compute: 8
 
-docker_device: vda
+docker_device: vdb
+
