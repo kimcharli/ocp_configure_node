@@ -2,7 +2,7 @@
 - name: Create
   hosts: localhost
   connection: local
-  gather_facts: False
+  gather_facts: false
   no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
   vars:
     molecule_file: "{{ lookup('env', 'MOLECULE_FILE') }}"
@@ -27,6 +27,9 @@
         state: up
       register: server
       with_items: "{{ molecule_yml.platforms }}"
+
+    # NOTE(retr0h): Vagrant/VBox sucks and parallelizing instance creation
+    # causes issues.
 
     # Mandatory configuration for Molecule to function.
 

@@ -15,4 +15,4 @@
 - name: Check size of docker device using parted
   parted: device=/dev/{{ docker_device }} unit=GB
   register: size_check
-  failed_when: size_check.sdb_info.size < min_storage[node_type]
+  failed_when: size_check.disk.size|int < min_storage[node_type]

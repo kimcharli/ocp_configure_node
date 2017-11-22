@@ -35,6 +35,31 @@ A list of the external variables used by the role.
 | **min_cpu**  | List of minimum cpu requirements, by node_type | (defaults in role)  |
 | **docker_device** | Device name for docker storage | (defaults to /dev/sdb) |
 
+## Testing:
+
+The molecule test uses a vagrant box rather than a docker container, by default it will use a vagrant box called rhel74.
+The role expects there to be a second drive ('vdb') and tests for this. You can add a second drive to your vagrant box by adding a line to your Vagrantfile 
+found in ~/.vagrant.d/boxes/rhel74/0/libvirt/Vagrantfile like this:
+
+```
+ config.vm.provider :libvirt do |domain|
+    domain.memory = 2048
+    domain.cpus = 2
+    domain.nested = true
+    domain.volume_cache = 'none'
+    domain.storage :file, :size => '10G'
+  end
+```
+
+The vagrant box will need to be registered to RHN. Add a file secrets.yml to molecule/default/vars with the format:
+
+```
+redhat_username: <my RHN username>
+redhat_password: <my RHN password>
+redhat_subscription_poolid: <Pool ID to use>
+```
+
+
 
 
 ## Usage:

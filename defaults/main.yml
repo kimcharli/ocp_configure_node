@@ -1,5 +1,6 @@
 ---
 # defaults file for ocp_configure_node
+ansible_become: true
 
 node_type: compute
 
