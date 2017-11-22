@@ -11,4 +11,3 @@
 - name: Enable required repositories
   command: subscription-manager repos --enable="{{ item }}"
   with_items: "{{ repos_to_enable }}"
-

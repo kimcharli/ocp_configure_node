@@ -21,4 +21,3 @@ min_cpus:
   compute: 8
 
 docker_device: vdb
-
