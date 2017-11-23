@@ -2,18 +2,20 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: virtualbox
 lint:
   name: yamllint
 platforms:
   - name: ocp-configure-node
-    image: registry.access.redhat.com/rhel7:latest
+    box: rhel74
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: default
+  name: vagrant
 verifier:
   name: testinfra
   lint:
