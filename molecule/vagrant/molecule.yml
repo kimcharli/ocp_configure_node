@@ -9,7 +9,7 @@ lint:
   name: yamllint
 platforms:
   - name: ocp-configure-node
-    box: rhel74
+    box: rhel74_sub
 provisioner:
   name: ansible
   lint:

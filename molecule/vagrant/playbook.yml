@@ -3,7 +3,6 @@
 - name: Converge
   hosts: all
   roles:
-    - role: rhel_register_node
     - role: ocp_configure_node
   vars:
     - node_type: compute
