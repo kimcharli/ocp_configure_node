@@ -20,11 +20,11 @@ packages_to_install:
 
 docker_version: 1.12.6
 
-yum_plugins_to_disable:
+aws_yum_plugins_to_disable:
   - amazon-id
   - rhui-lb
 
-yum_plugins_to_enable:
+aws_yum_plugins_to_enable:
   - product_id
   - search-disabled-repos
   - subscription-manager
