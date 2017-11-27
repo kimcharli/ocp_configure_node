@@ -25,7 +25,7 @@ aws_yum_plugins_to_disable:
   - rhui-lb
 
 aws_yum_plugins_to_enable:
-  - product_id
+  - product-id
   - search-disabled-repos
   - subscription-manager
   
