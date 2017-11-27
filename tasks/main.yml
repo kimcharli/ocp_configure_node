@@ -1,6 +1,15 @@
 ---
 # tasks file for ocp_configure_node
 
+# ensure we are properly subscribed to the repos
+- include_tasks: subscription_manager_tasks.yml
+  when: ansible_distribution == "RedHat"
+
+- name: Update all
+  yum:
+    name: '*'
+    state: latest
+
 # These tasks shouldn't be run when we are testing on Molecule under docker
 - include_tasks: disk_tasks.yml
   when: ansible_virtualization_type != "docker"
@@ -30,19 +39,12 @@
     policy: targeted
     state: enforcing
 
-- include_tasks: subscription_manager_tasks.yml
-  when: ansible_distribution == "RedHat"
 
 - name: Install base packages required for OCP
   yum:
     name: "{{ item }}"
     state: latest
   with_items: "{{ packages_to_install }}"
-
-- name: Update all
-  yum:
-    name: '*'
-    state: latest
 
 - name: Install docker
   yum:
