@@ -30,8 +30,8 @@ aws_yum_plugins_to_enable:
   - subscription-manager
   
 aws_rhui_repofiles:
-  - /etc/yum.repos.d/redhat-rhui-client-config.repo"
-  - /etc/yum.repos.d/redhat-rhui.repo"
-  - /etc/yum.repos.d/rhui-load-balancers.conf"
+  - /etc/yum.repos.d/redhat-rhui-client-config.repo
+  - /etc/yum.repos.d/redhat-rhui.repo
+  - /etc/yum.repos.d/rhui-load-balancers.conf
   
   
