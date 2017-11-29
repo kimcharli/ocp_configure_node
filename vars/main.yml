@@ -17,6 +17,7 @@ packages_to_install:
   - kexec-tools
   - sos
   - psacct
+  - python-passlib
 
 docker_version: 1.12.6
 
