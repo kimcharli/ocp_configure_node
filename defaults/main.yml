@@ -10,6 +10,7 @@ min_storage:
   infra: 50
   compute: 50
   registry: 50
+  glusterfs: 50
 
 # Memory values in GB
 min_memory:
@@ -17,12 +18,14 @@ min_memory:
   infra: 16
   compute: 32
   registry: 16
+  glusterfs: 16
 
 min_cpus:
   master: 4
   infra: 2
   compute: 8
   registry: 2
+  glusterfs: 2
   
 docker_device: vdb
 
