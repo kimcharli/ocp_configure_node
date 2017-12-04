@@ -4,7 +4,7 @@ ansible_become: true
 
 node_type: compute
 
-# Storage values in GB
+# Minimum docker storage in GB
 min_storage:
   master: 50
   infra: 50
@@ -25,3 +25,8 @@ min_cpus:
   registry: 2
   
 docker_device: vdb
+
+# The minimum gluster storage in GB
+# This is only checked with node_type: glusterfs
+gluster_device: vdc
+min_gluster_storage: 50

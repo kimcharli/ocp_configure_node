@@ -16,3 +16,9 @@
   parted: device=/dev/{{ docker_device }} unit=GB
   register: size_check
   failed_when: size_check.disk.size|int < min_storage[node_type]
+
+- name: Check size of glusterfs device using parted
+  parted: device=/dev/{{ gluster_device }} unit=GB
+  register: gluster_size_check
+  failed_when: gluster_size_check.disk.size|int < min_gluster_storage
+  when: node_type == "glusterfs"
