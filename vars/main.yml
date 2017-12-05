@@ -5,6 +5,7 @@ repos_to_enable:
   - rhel-7-server-extras-rpms
   - rhel-7-server-ose-3.6-rpms
   - rhel-7-fast-datapath-rpms
+  - rh-gluster-3-for-rhel-7-server-rpms
 
 packages_to_install:
   - wget
@@ -18,6 +19,8 @@ packages_to_install:
   - sos
   - psacct
   - python-passlib
+  - cns-deploy
+  - heketi-client
 
 docker_version: 1.12.6
 
