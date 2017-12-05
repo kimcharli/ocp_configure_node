@@ -39,7 +39,6 @@
     policy: targeted
     state: enforcing
 
-
 - name: Install base packages required for OCP
   yum:
     name: "{{ item }}"
