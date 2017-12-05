@@ -11,7 +11,7 @@ gluster_repos:
 
 gluster_packages:
   - heketi-client
-  - cns_deploy
+  - cns-deploy
 
 packages_to_install:
   - wget
