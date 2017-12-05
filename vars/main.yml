@@ -7,6 +7,13 @@ repos_to_enable:
   - rhel-7-fast-datapath-rpms
   - rh-gluster-3-for-rhel-7-server-rpms
 
+gluster_repos:
+  - rh-gluster-3-for-rhel-7-server-rpms
+
+gluster_packages:
+  - heketi_client
+  - cns_deploy
+
 packages_to_install:
   - wget
   - git

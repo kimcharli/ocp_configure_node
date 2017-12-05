@@ -51,6 +51,9 @@
     name: docker-{{ docker_version }}
     state: present
 
+- name: Install Gluster Requirements
+  include_tasks: gluster_tasks.yaml
+
 # We can't test docker configuration when running under docker
 - include_tasks: docker_tasks.yaml
   when: ansible_virtualization_type != "docker"
