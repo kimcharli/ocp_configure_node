@@ -12,6 +12,7 @@ gluster_repos:
 gluster_packages:
   - heketi-client
   - cns-deploy
+  - glusterfs-fuse
 
 packages_to_install:
   - wget
