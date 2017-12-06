@@ -33,7 +33,9 @@ A list of the external variables used by the role.
 | **min_storage**  | List of minimum storage requirements, by node_type  |  (defaults in role) |
 | **min_memory**  | List of minimum memory requirements, by node_type | (defaults in role)  |
 | **min_cpu**  | List of minimum cpu requirements, by node_type | (defaults in role)  |
-| **docker_device** | Device name for docker storage | (defaults to /dev/sdb) |
+| **docker_device** | Device name for docker storage | (defaults to /dev/vdb) |
+| **gluster_device** | Device name for gluster storage | (defaults to /dev/vdc) |
+| **min_gluster_storage** | Minimum size for gluster storage, in GB |  (defaults to 50GB) |
 
 ## Testing:
 
