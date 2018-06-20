@@ -3,11 +3,12 @@
 repos_to_enable:
   - rhel-7-server-rpms
   - rhel-7-server-extras-rpms
-  - rhel-7-server-ose-3.6-rpms
+  - rhel-7-server-ose-3.9-rpms
   - rhel-7-fast-datapath-rpms
 
 gluster_repos:
   - rh-gluster-3-for-rhel-7-server-rpms
+  - rh-gluster-3-client-for-rhel-7-server-rpms
 
 gluster_packages:
   - heketi-client
@@ -26,8 +27,9 @@ packages_to_install:
   - sos
   - psacct
   - python-passlib
+  - atomic-openshift-utils
 
-docker_version: 1.12.6
+docker_version: 1.13.1
 
 aws_yum_plugins_to_disable:
   - amazon-id
